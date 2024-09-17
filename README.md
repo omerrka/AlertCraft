@@ -59,7 +59,7 @@ struct ContentView: View {
     }
 }
 ```
-#### Customizing the Alert
+### Customizing the Alert
 #### You can customize the alert by setting the following parameters:
 
 #### * Title: Main text in the alert.
