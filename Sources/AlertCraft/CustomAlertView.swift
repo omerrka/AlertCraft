@@ -18,7 +18,7 @@ public struct CustomAlertView: View {
         self.secondaryButtonAction = secondaryButtonAction
     }
     
-   public var body: some View {
+    public var body: some View {
         VStack(spacing: 16) {
             VStack(spacing: 8) {
                 if let image = alertType.alert.image {
@@ -28,13 +28,11 @@ public struct CustomAlertView: View {
                         .frame(width: 100, height: 100)
                 }
                 
-                if let title = alertType.alert.title {
-                    Text(title)
-                        .font(.headline)
-                        .fontWeight(alertType.alert.titleFontWeight)
-                        .foregroundColor(alertType.alert.titleColor)
-                        .padding(.top)
-                }
+                Text(alertType.alert.title)
+                    .font(.headline)
+                    .fontWeight(alertType.alert.titleFontWeight)
+                    .foregroundColor(alertType.alert.titleColor)
+                    .padding(.top)
                 
                 if let message = alertType.alert.message {
                     Text(message)
@@ -44,22 +42,21 @@ public struct CustomAlertView: View {
                         .padding(.horizontal)
                 }
             }
+            
             VStack(spacing: 4) {
-                if let primaryButton = alertType.alert.primaryButton, primaryButton.isShown == true  {
-                    Button(action: primaryButtonAction) {
-                        Text(primaryButton.text ?? "OK")
-                            .fontWeight(primaryButton.fontWeight)
-                            .foregroundColor(primaryButton.textColor)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(primaryButton.backgroundColor)
-                            .cornerRadius(10)
-                    }
+                Button(action: primaryButtonAction) {
+                    Text(alertType.alert.primaryButton.text)
+                        .fontWeight(alertType.alert.primaryButton.fontWeight)
+                        .foregroundColor(alertType.alert.primaryButton.textColor)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(alertType.alert.primaryButton.backgroundColor)
+                        .cornerRadius(10)
                 }
                 
-                if let secondaryButton = alertType.alert.secondaryButton, secondaryButton.isShown == true {
+                if let secondaryButton = alertType.alert.secondaryButton {
                     Button(action: secondaryButtonAction) {
-                        Text(secondaryButton.text ?? "Cancel")
+                        Text(secondaryButton.text)
                             .fontWeight(secondaryButton.fontWeight)
                             .foregroundColor(secondaryButton.textColor)
                             .padding()
